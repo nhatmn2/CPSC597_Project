@@ -10,7 +10,7 @@ const { data: session } = useSession();
 return (
 <>
     <Head>
-        <title>DataSoft - Data Dashboard</title>
+        <title>CPSC597 - Data Dashboard</title>
         <meta name="description" content="Data Dashboard" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

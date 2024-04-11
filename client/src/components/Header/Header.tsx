@@ -68,7 +68,7 @@ return (
             textDecoration: "none",
         }}
         >
-        DataSoft
+        CPSC597
         </Typography>
         <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
         <Typography
@@ -87,7 +87,7 @@ return (
             textDecoration: "none",
         }}
         >
-        DataSoft
+        CPSC597
         </Typography>
         {tabletCheck && (
         <Box sx={{ paddingRight: 5, marginLeft: "auto" }}>
