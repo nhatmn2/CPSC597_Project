@@ -10,7 +10,7 @@ import Team from "./scenes/team";
 //import Dataset from "./scenes/dataset";
 //import ContentCheck from "./scenes/contentcheck";
 //import DomainCheck from "./scenes/domaincheck";
-//import Contacts from "./scenes/contacts";
+import Contacts from "./scenes/contacts";
 //import Calendar from "./scenes/calendar";
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard/>} />
             <Route path="/team" element={<Team/>}/>
+            <Route path="/contacts" element={<Contacts/>}/>
           </Routes>
         </main>
       </div>
