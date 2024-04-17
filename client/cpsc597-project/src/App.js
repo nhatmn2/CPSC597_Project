@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
-import CustomSidebar from "./scenes/global/Sidebar";
-//import Dashboard from "./scenes/dashboard";
+import Sidebar from "./scenes/global/Sidebar";
+import Dashboard from "./scenes/dashboard";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
-//import Team from "./scenes/team";
+import Team from "./scenes/team";
 //import FAQ from "./scenes/faq";
 //import Dataset from "./scenes/dataset";
 //import ContentCheck from "./scenes/contentcheck";
@@ -21,19 +21,13 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className = 'app'>
-        <CustomSidebar isSidebar={isSidebar}/>
+        <Sidebar isSidebar={isSidebar}/>
         <main className='content'>
           <Topbar setIsSidebar={setIsSidebar}/>
           {/* Routing all the pages */}
           <Routes>
-            {/*<Route path="/" element={<Dashboard/>} />*/}
-            {/*<Route path="/contact" element={<Contacts/>} />*/}
-            {/*<Route path="/team" element={<Team />} />
-            <Route path="/dataset" element={<Dataset/>} />
-            <Route path="/contentcheck" element={<ContentCheck/>} />
-            <Route path="/domaincheck" element={<DomainCheck/>} />
-            <Route path="/faq" element={<FAQ/>} />
-            <Route path="/calendar" element={<Calendar/>}/>*/}
+            <Route path="/" element={<Dashboard/>} />
+            <Route path="/team" element={<Team/>}/>
           </Routes>
         </main>
       </div>
