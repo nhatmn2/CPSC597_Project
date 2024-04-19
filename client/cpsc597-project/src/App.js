@@ -6,12 +6,8 @@ import Dashboard from "./scenes/dashboard";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Team from "./scenes/team";
-//import FAQ from "./scenes/faq";
-//import Dataset from "./scenes/dataset";
-//import ContentCheck from "./scenes/contentcheck";
-//import DomainCheck from "./scenes/domaincheck";
+import UploadCSV from "./scenes/UploadCSV";
 import Contacts from "./scenes/contacts";
-//import Calendar from "./scenes/calendar";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -29,6 +25,7 @@ function App() {
             <Route path="/" element={<Dashboard/>} />
             <Route path="/team" element={<Team/>}/>
             <Route path="/contacts" element={<Contacts/>}/>
+            <Route path="/uploadCSV" element={<UploadCSV/>}/>
           </Routes>
         </main>
       </div>
