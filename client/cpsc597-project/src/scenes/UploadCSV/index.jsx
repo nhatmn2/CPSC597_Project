@@ -4,6 +4,7 @@ import { ResponsiveBar } from '@nivo/bar';
 
 function UploadCSV() {
     const [chartData, setChartData] = useState([]);
+    const [total, setTotal] = useState(0);
     const [uploadStatus, setUploadStatus] = useState('');
 
     const handleFileChange = (event) => {
@@ -19,7 +20,7 @@ function UploadCSV() {
         const formData = new FormData();
         formData.append('file', file);
         setUploadStatus('Uploading...');
-        
+
         try {
             const response = await axios.post('http://localhost:8080/api/upload', formData, {
                 headers: {
@@ -53,6 +54,7 @@ function UploadCSV() {
             "Count": categoryCounts[key]
         }));
 
+        setTotal(data.length);
         setChartData(formattedChartData);
     };
 
@@ -65,11 +67,16 @@ function UploadCSV() {
         }
     };
 
+    const getBarColor = bar => {
+        // Assuming bar.data.Category correctly accesses the category name
+        return bar.data.Category === "Phishing Email" ? '#f54242' : '#4287f5';
+    };
+
     return (
         <div style={{ height: 500, width: '100%' }}>
             <input type="file" accept=".csv" onChange={handleFileChange} />
             {uploadStatus && <p>{uploadStatus}</p>}
-            <div style={{ height: 400, width: '100%', marginTop: 20 }}>
+            <div style={{ height: 600, width: '100%', marginTop: 20 }}>
                 <ResponsiveBar
                     data={chartData}
                     keys={['Count']}
@@ -78,7 +85,7 @@ function UploadCSV() {
                     padding={0.3}
                     valueScale={{ type: 'linear' }}
                     indexScale={{ type: 'band', round: true }}
-                    colors={{ scheme: 'nivo' }}
+                    colors={getBarColor}
                     borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
                     axisTop={null}
                     axisRight={null}
@@ -98,9 +105,8 @@ function UploadCSV() {
                         legendPosition: 'middle',
                         legendOffset: -40
                     }}
-                    labelSkipWidth={12}
-                    labelSkipHeight={12}
                     labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    labelFormat={d => `${(d / total * 100).toFixed(2)}%`}
                     legends={[
                         {
                             dataFrom: 'keys',
@@ -131,7 +137,7 @@ function UploadCSV() {
                 />
             </div>
         </div>
-        );
-    }
-    
-    export default UploadCSV;
+    );
+}
+
+export default UploadCSV;
